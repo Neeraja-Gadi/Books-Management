@@ -28,7 +28,7 @@ const Authorization = async function (req, res, next) {
     bookId = req.params.bookId
     if (!ObjectId.isValid(bookId)) return res.status(400).send({ status: false, message: "Book Id is invalid in url!!!!" })
     let user = await bookModel.findById(bookId)
-    if (!user) return res.status(400).send({ status: false, message: "book id is invalid in url!!!" })
+    if (!user) return res.status(404).send({ status: false, message: "UserId not found" })
     let userId = user.userId
 
 
